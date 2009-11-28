@@ -106,7 +106,7 @@
  |       and won't be affected by this 'FAL_table_prefix' configuration
  |
  */
- $config['FAL_table_prefix'] = 'fa_';
+ $config['FAL_table_prefix'] = 'ok_';
 
 
 /*---------------+

@@ -5,11 +5,18 @@ class Welcome extends Controller {
 	function Welcome()
 	{
 		parent::Controller();	
+        $this->load->helper('form');
 	}
 	
 	function index()
 	{
-		$this->load->view('welcome_message');
+        if($this->freakauth_light->check())
+        {
+            //$data['user']=
+        }else{
+            $this->load->view('login_form');
+        }
+		$this->load->view('welcome_message',$data);
 	}
 }
 
