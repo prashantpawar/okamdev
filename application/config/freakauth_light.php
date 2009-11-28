@@ -16,7 +16,7 @@
 /*---------------------+
 |  MAIN CONFIGURATION  |
 +---------------------*/
- 
+
  /*
  |--------------------------------------------------------------------------
  | Name of the website
@@ -25,8 +25,8 @@
  | It will be displayed in some headers and in the subject of the emails
  |
  */
- $config['FAL_website_name']    = "YOUR_DOMAIN.com";
- 
+ $config['FAL_website_name']    = "localhost";
+
  /*
  |--------------------------------------------------------------------------
  | email address of the administrator
@@ -35,8 +35,8 @@
  | It will be displayed in some headers and in the subject of the emails
  |
  */
- $config['FAL_user_support'] = 'you@your-email.com';
- 
+ $config['FAL_user_support'] = 'prashantpawar@gmail.com';
+
  /*
  |--------------------------------------------------------------------------
  | Enable/Disable FreakAuth light system
@@ -46,21 +46,21 @@
  |
  */
  $config['FAL'] = TRUE;
- 
+
  /*
  |--------------------------------------------------------------------------
  | Enable/Disable FreakAuth light extensions
  |--------------------------------------------------------------------------
  |
- | If you need to extend the Core class (libraries/FreakAuth_light.php) or 
+ | If you need to extend the Core class (libraries/FreakAuth_light.php) or
  | the FAL_validation.php class build your files according to the following
- | specifications about file-names. You can place them either in 
+ | specifications about file-names. You can place them either in
  | system/libraries or in application/libraries
  |
  | - libraries/MyFAL.php
  | - libraries/MyFALVal.php
- | 
- | Alternatively you can simply rename the built in demo files from 
+ |
+ | Alternatively you can simply rename the built in demo files from
  | - libraries/MyFAL_demo.php to libraries/MyFAL.php
  | - libraries/MyFALVal_demo.php to libraries/MyFALVal.php
  |
@@ -72,29 +72,29 @@
  | -----------------
  |<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
  |
- |   class MyFAL extends Freakauth_light 
+ |   class MyFAL extends Freakauth_light
  |   {
- |       // -------------------------------------------------------------------- 
+ |       // --------------------------------------------------------------------
  |       // Class constructor
  |       // not really needed but I wrote it anyway
  |       function MyFAL()
  |       {
  |       	parent::Freakauth_light();
  |       }
- |       
- |       // -------------------------------------------------------------------- 
+ |
+ |       // --------------------------------------------------------------------
  |       // Overwrites normal FAL logout
  |       function logout()
  |       {
  |           log_message('debug', 'MyFAL logout working');
- |          
+ |
  |           exit('MyFAL logout working');
  |       }
  |     }
  |
  */
  $config['FAL_use_extensions'] = FALSE;
- 
+
  /*
  |------------------------------------------------------------------------------
  | The table prefix for the database tables needed by FreakAuth_light
@@ -126,7 +126,7 @@
  |
  */
  $config['FAL_deny_with_flash_message'] = TRUE;
- 
+
  /*
  |------------------------------------------------------------------------------
  | Page where the valid users are taken when access is denied & no local referer
@@ -138,7 +138,7 @@
  |
  */
  $config['FAL_denied_from_ext_location'] = '';
-                             
+
  /*
  |------------------------------------------------------------------------------
  | Page loaded if 'FAL_deny_with_flash_message' set to FALSE
@@ -149,7 +149,7 @@
  |
  */
  $config['FAL_denied_page'] = 'FreakAuth_light/template/denied';
- 
+
 
 /*----------------+
 |  USER HANDLING  |
@@ -161,11 +161,11 @@
  |------------------------------------------------------------------------------
  */
  $config['FAL_allow_user_registration'] = TRUE;
- 
+
  /*
  |------------------------------------------------------------------------------
  | Whether the registration/activation process requires e-mail verification
- | 
+ |
  | If set to FALSE, the registration process is as follows:
  | 1) the user registers to the website (data stored in user_temp table)
  | 2) the user gets a registration e-mail with an activation link
@@ -181,8 +181,8 @@
  |------------------------------------------------------------------------------
  */
  $config['FAL_register_direct'] = FALSE;
- 
- 
+
+
  /*
  |------------------------------------------------------------------------------
  | Usernames and passwords config
@@ -199,14 +199,14 @@
  |------------------------------------------------------------------------------
  */
  $config['FAL_use_country'] = TRUE;
- 
+
  /*
  |------------------------------------------------------------------------------
  | Whether to use custom user profile or not
  |------------------------------------------------------------------------------
  */
  $config['FAL_create_user_profile'] = TRUE;
- 
+
  /*
  |------------------------------------------------------------------------------
  | Whether to use CAPTCHA (security code) functionality for those processes
@@ -215,7 +215,7 @@
  $config['FAL_use_captcha_login'] = TRUE;
  $config['FAL_use_captcha_register'] = TRUE;
  $config['FAL_use_captcha_forgot_password'] = TRUE;
- 
+
  /*
  |------------------------------------------------------------------------------
  | The time that a new registered user has for activation (default 1 day)
@@ -225,7 +225,7 @@
  |
  */
  $config['FAL_temporary_users_expiration'] = 3600*24;
- 
+
 
 /*-------------------------------------+
 |  CUSTOM CONTROLLERS NAMING SETTINGS  |
@@ -242,7 +242,7 @@
  | --------
  | NOTE!
  | --------
- | For 
+ | For
  | - $config['FAL_activation_uri']
  | - $config['FAL_forgottenPasswordReset_uri']
  | it is compulsory to specify both the controller/method even if the
@@ -255,7 +255,7 @@
  $config['FAL_changePassword_uri'] = 'auth/changepassword';
  $config['FAL_forgottenPassword_uri'] = 'auth/forgotten_password';
  $config['FAL_forgottenPasswordReset_uri'] = 'auth/forgotten_password_reset'; //read the above note
- 
+
 /*------------------+
 |  TEMPLATE SETTINGS|
 +------------------*/
@@ -275,7 +275,7 @@
  $config['FAL_assets_shared'] = $config['FAL_assets'].'/shared'; //shared assets
  $config['FAL_assets_front'] = $config['FAL_assets'].'/frontend'; //admin frontend
  $config['FAL_assets_admin'] = $config['FAL_assets'].'/admin'; //admin backend
- 
+
 
 /*-------------------+
 |  CAPTCHA SETTINGS  |
@@ -341,7 +341,7 @@ $config['FAL_captcha_image'] = '';
 |
 | Time (in seconds) that the autologin cookie remains valid.
 |
-| !NOTE: not used so far. It's here for future REMEMBER ME 
+| !NOTE: not used so far. It's here for future REMEMBER ME
 |        implementation
 |
 */
@@ -383,7 +383,7 @@ $config['FAL_auto_login_period'] = 60*60*24*30;
 /*----------------+
 |  VIEW SETTINGS  |
 +----------------*/
- 
+
  /*
  |------------------------------------------------------
  |  Directory of your FreakAuth_light templates
@@ -402,40 +402,40 @@ $config['FAL_auto_login_period'] = 60*60*24*30;
  // REGISTRATION
   // view to display the user registration form
   $config['FAL_register_view'] = $config['FAL_template_dir'].'content/forms/register';
-  
+
   // view to display the successful registration information
   $config['FAL_register_success_view'] = $config['FAL_template_dir'].'content/register_success';
-  
+
   // view to display the successful activation information
   $config['FAL_register_activation_success_view'] = $config['FAL_template_dir'].'content/activation_success';
-  
+
   // view to display the failed activation information
   $config['FAL_register_activation_failed_view'] = $config['FAL_template_dir'].'content/activation_failed';
 
  // FORGOTTEN PASSWORD
   // view to display the forgotten password form
   $config['FAL_forgotten_password_view'] = $config['FAL_template_dir'].'content/forms/forgotten_password';
-  
+
   // view to display the successful forgotten password request
   $config['FAL_forgotten_password_success_view'] = $config['FAL_template_dir'].'content/forgotten_password_success';
-  
+
   // view to display the successful forgotten password reset
   $config['FAL_forgotten_password_reset_success_view'] = $config['FAL_template_dir'].'content/forgotten_password_reset_success';
-  
+
   // view to display the failed forgotten password reset
   $config['FAL_forgotten_password_reset_failed_view'] = $config['FAL_template_dir'].'content/forgotten_password_reset_failed';
 
  // CHANGE PASSWORD
   // view to display the forgotten password form
   $config['FAL_change_password_view'] = $config['FAL_template_dir'].'content/forms/change_password';
-  
+
  // CAPTCHA VIEW
   $config['FAL_captcha_img_tag_view'] = $config['FAL_template_dir'].'content/forms/html_for_captcha';
-  
+
  // ERROR DELIMITERS
   //Opening tag for the validation error messages
   $config['FAL_error_delimiter_open'] = '<div class="error">';
-  
+
   //closing tag for the validation error messages
   $config['FAL_error_delimiter_close'] = '</div>';
 
@@ -445,16 +445,16 @@ $config['FAL_auto_login_period'] = 60*60*24*30;
 +--------------------------*/
 
  $config['FAL_email_from'] = 'webmaster';
- 
+
  // The location of the activation email
  $config['FAL_activation_email'] = $config['FAL_template_dir'].'email/activation_email';
- 
+
  // The location of the forgotten password email
  $config['FAL_forgotten_password_email'] = $config['FAL_template_dir'].'email/forgotten_password_email';
- 
+
  // The location of the forgotten password reset email
  $config['FAL_forgotten_password_reset_email'] = $config['FAL_template_dir'].'email/forgotten_password_reset_email';
- 
+
  // View to send by email for the change password informations
  $config['FAL_change_password_email'] = $config['FAL_template_dir'].'email/change_password_email';
 
@@ -465,20 +465,20 @@ $config['FAL_auto_login_period'] = 60*60*24*30;
 
  // The action to execute after successful login
  $config['FAL_login_success_action'] = '';
- 
+
  // The action to execute after successful logout
  $config['FAL_logout_success_action'] = '';
- 
+
  // The action to execute after REGISTRATION ('continue' link)
  $config['FAL_register_continue_action'] = '';
- 
+
  // The action to execute after ACTIVATION, ('continue' link)
   // wether it failed or it was successful
  $config['FAL_activation_continue_action'] = 'auth';
- 
+
  // The action to execute after requesting FORGOTTEN PASSWORD
  $config['FAL_forgotten_password_continue_action'] = '';
- 
+
 /*-----------------+
 |  ADMIN SETTINGS  |
 +-----------------*/
@@ -498,15 +498,15 @@ $config['FAL_admin_console_records_per_page'] = 2;
 |-------------------------------------------------------------------------------
 | ACL ROLES SETTINGS (don't change them)
 |-------------------------------------------------------------------------------
-| 
+|
 | FreakAuth_light  roles work by inheritance.
 | This means that the lower the value of the role, the higher it is in the
 | hierarchy:
 | i.e superadmin (value 1) has more rights than admin (value 2)
 | i.e editor (value 3) has more rights than user (value 100)
-| 
+|
 | you can also set usergroups with the same hierarchy
-| i.e. 
+| i.e.
 | 'editor' => 4,
 | 'gallery_manager' => 4
 |  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -519,12 +519,12 @@ $config['FAL_roles'] =
          'superadmin' => 1,
          'admin' => 2,
          //end don't change
-         
+
          //add your custom roles here
          //'editor' => 3,
          //'gallery_manager' => 4
          //--------------------------
-         
+
          //don't change the following line
          'user' => 100,
     );

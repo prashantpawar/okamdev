@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -9,7 +9,7 @@
 | and its corresponding controller class/method. The segments in a
 | URL normally follow this pattern:
 |
-| 	example.com/class/method/id/
+| 	www.your-site.com/class/method/id/
 |
 | In some instances, however, you may want to remap this relationship
 | so that a different class/function is called than the one
@@ -17,7 +17,7 @@
 |
 | Please see the user guide for complete details:
 |
-|	http://codeigniter.com/user_guide/general/routing.html
+|	http://www.codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -35,14 +35,15 @@
 |
 | This route lets you set a "secret" word that will trigger the
 | scaffolding feature for added security. Note: Scaffolding must be
-| enabled in the controller in which you intend to use it.   The reserved 
-| routes must come before any wildcard or regular expression routes.
+| enabled in the controller in which you intend to use it.
 |
 */
 
-$route['default_controller'] = "welcome";
-$route['scaffolding_trigger'] = "";
+$route['default_controller'] = "freakauth_demo";
+$route['scaffolding_trigger'] = "scaff";
 
+$route['admin'] = "admin/adminhome";
+$route['admin/users/:num'] = "admin/users";
+$route['admin/admins/:num'] = "admin/admins";
 
-/* End of file routes.php */
-/* Location: ./system/application/config/routes.php */
+?>

@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | AUTO-LOADER
@@ -23,7 +23,6 @@
 | 3. Plugins
 | 4. Custom config files
 | 5. Language files
-| 6. Models
 |
 */
 
@@ -39,7 +38,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('database', 'Freakauth_light');
 
 
 /*
@@ -51,7 +50,7 @@ $autoload['libraries'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
+$autoload['helper'] = array('url', 'form', 'array', 'freakauth_light', 'html');
 
 
 /*
@@ -79,7 +78,7 @@ $autoload['plugin'] = array();
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('freakauth_light');
 
 
 /*
@@ -97,20 +96,15 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-
 /*
 | -------------------------------------------------------------------
-|  Auto-load Models
+|  Auto-load Core Libraries
 | -------------------------------------------------------------------
-| Prototype:
 |
-|	$autoload['model'] = array('model1', 'model2');
+| DEPRECATED:  Use $autoload['libraries'] above instead.
 |
 */
-
-$autoload['model'] = array();
-
+// $autoload['core'] = array();
 
 
-/* End of file autoload.php */
-/* Location: ./system/application/config/autoload.php */
+?>
