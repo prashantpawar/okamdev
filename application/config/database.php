@@ -38,7 +38,7 @@ $active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "renegade.xen.prgmr.com";
-$db['default']['username'] = "okdamdev";
+$db['default']['username'] = "okamdev";
 $db['default']['password'] = "chimpanzee";
 $db['default']['database'] = "okamdev";
 $db['default']['dbdriver'] = "mysql";
