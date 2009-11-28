@@ -4,14 +4,18 @@ class Welcome extends Application {
 
 	function Welcome()
 	{
-		parent::Controller();
+		parent::Application();
         //$this->load->	
 	}
 	
 	function index()
 	{
-        $this->auth->login();
-		$this->load->view('welcome_message');
+        if(logged_in())
+        {
+            $this->load->view('welcome_message');
+        }else{
+            $this->auth->login();
+        }
 	}
 }
 
