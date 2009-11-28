@@ -1,1 +1,0 @@
-<?php fag_alert(); ?>

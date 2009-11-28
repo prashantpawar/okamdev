@@ -39,7 +39,7 @@
 |
 */
 
-$route['default_controller'] = "freakauth_demo";
+$route['default_controller'] = "welcome";
 $route['scaffolding_trigger'] = "scaff";
 
 $route['admin'] = "admin/adminhome";
