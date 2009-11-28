@@ -1,14 +1,16 @@
 <?php
 
-class Welcome extends Controller {
+class Welcome extends Application {
 
 	function Welcome()
 	{
-		parent::Controller();	
+		parent::Controller();
+        //$this->load->	
 	}
 	
 	function index()
 	{
+        $this->auth->login();
 		$this->load->view('welcome_message');
 	}
 }

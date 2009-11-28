@@ -358,7 +358,7 @@ class Auth
 	      // No love either way, generate a random string ourselves
 	      $length = 20;
 	        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	        $token = ”;    
+	        $token = '';    
 	        for ($i = 0; $i < $length; $i++) {
 	            $token .= $characters[mt_rand(0, strlen($characters)-1)];
 	        }
