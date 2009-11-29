@@ -1,14 +1,14 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * MODULE NAME   : Ok_answers.php
+ * MODULE NAME   : Ok_users.php
  *
- * DESCRIPTION   : Ok_answers module controller
+ * DESCRIPTION   : Ok_users module controller
  *
  * MODIFICATION HISTORY
- *   V1.0   2009-11-28 11:16 PM   - Pradesh Chanderpaul     - Created
+ *   V1.0   2009-11-28 11:06 PM   - Pradesh Chanderpaul     - Created
  *
- * @package             Ok_answers
- * @subpackage          ok_answers component Class
+ * @package             Ok_users
+ * @subpackage          ok_users component Class
  * @author              Pradesh Chanderpaul
  * @copyright           Copyright (c) 2006-2007 DataCraft Software
  * @license             http://www.datacraft.co.za/codecrafter/license.html
@@ -17,7 +17,7 @@
  * @filesource
  */
 
-class Ok_answers extends Controller {
+class Ok_users extends Controller {
 
    /**
    * Contructor function
@@ -27,7 +27,7 @@ class Ok_answers extends Controller {
    * @access      public
    * @return      none
    */
-   function Ok_answers() {
+   function Ok_users() {
       parent::Controller();
    }
 
@@ -55,14 +55,14 @@ class Ok_answers extends Controller {
    // //////////////////////////////////////////////////////////////////////////
    // Function: showall()
    //
-   // Description: Extracts a list of all ok_answers data records and displays it.
+   // Description: Extracts a list of all ok_users data records and displays it.
    //
    // //////////////////////////////////////////////////////////////////////////
    function browse() {
 
       // ///////////////////////////////////////////////////////////////////////
       // Request the list from database. This is done by creating an instance of
-      // ...the ok_answers model and sending it a 'retrievelist' request.
+      // ...the ok_users model and sending it a 'retrievelist' request.
       // ///////////////////////////////////////////////////////////////////////
 
       // ///////////////////////////////////////////////////////////////////////
@@ -73,9 +73,9 @@ class Ok_answers extends Controller {
       $start = $this->uri->segment(3,0);
       $limit_per_page = 10;
 
-      $this->load->model('ok_answersmodel');                  // Instantiate the model
-      $the_results['ok_answers_list'] = $this->ok_answersmodel->findAll($start, $limit_per_page);  // Send the retrievelist msg
-      // $the_results['rowcount'] = count($the_results['ok_answers_list']);
+      $this->load->model('ok_usersmodel');                  // Instantiate the model
+      $the_results['ok_users_list'] = $this->ok_usersmodel->findAll($start, $limit_per_page);  // Send the retrievelist msg
+      // $the_results['rowcount'] = count($the_results['ok_users_list']);
 
       // ///////////////////////////////////////////////////////////////////////
       // NOTE: Set up the paging links. Just remove this if you don't need it,
@@ -84,8 +84,8 @@ class Ok_answers extends Controller {
       $this->load->library('pagination');
       $this->load->helper('url');
 
-      $config['base_url']     = site_url('ok_answers/showall/');   // or just /ok_answers/
-      $config['total_rows']   = $this->ok_answersmodel->table_record_count;
+      $config['base_url']     = site_url('ok_users/showall/');   // or just /ok_users/
+      $config['total_rows']   = $this->ok_usersmodel->table_record_count;
       $config['per_page']     = $limit_per_page;
 
       $this->pagination->initialize($config);
@@ -99,16 +99,16 @@ class Ok_answers extends Controller {
       // ///////////////////////////////////////////////////////////////////////
       $this->load->library('layout');
 
-      $this->layout->render_page('/ok_answers/ok_answersgrid', $the_results);
+      $this->layout->render_page('/ok_users/ok_usersgrid', $the_results);
       // NOTE: If you don't want to use the layout library, use the line below.
-      // $this->load->view('/ok_answers/ok_answersgrid', $the_results);
+      // $this->load->view('/ok_users/ok_usersgrid', $the_results);
 
    }
 
    // //////////////////////////////////////////////////////////////////////////
    // Function: add()
    //
-   // Description: Prompts user for input and adds a new ok_answers entry
+   // Description: Prompts user for input and adds a new ok_users entry
    //              ...onto the database.
    //
    // //////////////////////////////////////////////////////////////////////////
@@ -127,39 +127,67 @@ class Ok_answers extends Controller {
          // User is submitting data
          // Store the values from the form onto the db
          // ////////////////////////////////////////////////////////////////////
-         $this->load->model('ok_answersmodel');
+         $this->load->model('ok_usersmodel');
 
          /*
 		// XXS Filtering enforced for user input
 		$data['id']		= $this->input->post('id', TRUE);
-		$data['answer_text']		= $this->input->post('answer_text', TRUE);
+		$data['role_id']		= $this->input->post('role_id', TRUE);
+		$data['username']		= $this->input->post('username', TRUE);
+		$data['password']		= $this->input->post('password', TRUE);
+		$data['email']		= $this->input->post('email', TRUE);
+		$data['banned']		= $this->input->post('banned', TRUE);
+		$data['ban_reason']		= $this->input->post('ban_reason', TRUE);
+		$data['newpass']		= $this->input->post('newpass', TRUE);
+		$data['newpass_key']		= $this->input->post('newpass_key', TRUE);
+		$data['newpass_time']		= $this->input->post('newpass_time', TRUE);
+		$data['last_ip']		= $this->input->post('last_ip', TRUE);
+		$data['last_login']		= $this->input->post('last_login', TRUE);
+		$data['created']		= $this->input->post('created', TRUE);
+		$data['modified']		= $this->input->post('modified', TRUE);
 
          */
          $data = $this->_get_form_values();
 
-         $this->ok_answersmodel->add($data);
+         $this->ok_usersmodel->add($data);
 
          // $this->load->helper('url');
-         redirect('/ok_answers/', 'location');
+         redirect('/ok_users/', 'location');
 
       }
       else {
          // We have to show the user the input form
          /*
 		$data['id']		= '';
-		$data['answer_text']		= '';
+		$data['role_id']		= '';
+		$data['username']		= '';
+		$data['password']		= '';
+		$data['email']		= '';
+		$data['banned']		= '';
+		$data['ban_reason']		= '';
+		$data['newpass']		= '';
+		$data['newpass_key']		= '';
+		$data['newpass_time']		= '';
+		$data['last_ip']		= '';
+		$data['last_login']		= '';
+		$data['created']		= '';
+		$data['modified']		= '';
 
          */
          $data = $this->_clear_form();
          $data['action']       = 'add';
 
+		// Retrieve the ok_roles lookup values.
+		$this->load->model('ok_rolesmodel');
+		$data['ok_roleslist'] = $this->ok_rolesmodel->findAll();
+
 
 
          // Call upon the layout library to draw the input screen
          $this->load->library('layout');
-         $this->layout->render_page('/ok_answers/ok_answersdetails', $data);
+         $this->layout->render_page('/ok_users/ok_usersdetails', $data);
          // NOTE: If you don't want to use the layout library, use the line below.
-         // $this->load->view('/ok_answers/ok_answersdetails', $data);
+         // $this->load->view('/ok_users/ok_usersdetails', $data);
 
 
       }
@@ -185,20 +213,32 @@ class Ok_answers extends Controller {
          // User is submitting data
          // Store the values from the form onto the db
          // ////////////////////////////////////////////////////////////////////
-         $this->load->model('ok_answersmodel');
+         $this->load->model('ok_usersmodel');
 
          // $data['action']          = 'modify';
          /*
 		// XXS Filtering enforced for user input
 		$data['id']		= $this->input->post('id', TRUE);
-		$data['answer_text']		= $this->input->post('answer_text', TRUE);
+		$data['role_id']		= $this->input->post('role_id', TRUE);
+		$data['username']		= $this->input->post('username', TRUE);
+		$data['password']		= $this->input->post('password', TRUE);
+		$data['email']		= $this->input->post('email', TRUE);
+		$data['banned']		= $this->input->post('banned', TRUE);
+		$data['ban_reason']		= $this->input->post('ban_reason', TRUE);
+		$data['newpass']		= $this->input->post('newpass', TRUE);
+		$data['newpass_key']		= $this->input->post('newpass_key', TRUE);
+		$data['newpass_time']		= $this->input->post('newpass_time', TRUE);
+		$data['last_ip']		= $this->input->post('last_ip', TRUE);
+		$data['last_login']		= $this->input->post('last_login', TRUE);
+		$data['created']		= $this->input->post('created', TRUE);
+		$data['modified']		= $this->input->post('modified', TRUE);
 
          */
          $data = $this->_get_form_values();
 
-         $this->ok_answersmodel->modify($data['id'], $data);
+         $this->ok_usersmodel->modify($data['id'], $data);
 
-         redirect('/ok_answers/', 'location');
+         redirect('/ok_users/', 'location');
 
       }
       else {
@@ -206,16 +246,20 @@ class Ok_answers extends Controller {
 
          $idField = $this->uri->segment(3);
 
-         $this->load->model('ok_answersmodel');
-         $data = $this->ok_answersmodel->retrieve_by_pkey($idField);
+         $this->load->model('ok_usersmodel');
+         $data = $this->ok_usersmodel->retrieve_by_pkey($idField);
          $data['action'] = 'modify';
+
+		// Retrieve the ok_roles lookup values.
+		$this->load->model('ok_rolesmodel');
+		$data['ok_roleslist'] = $this->ok_rolesmodel->findAll();
 
 
 
          $this->load->library('layout');
-         $this->layout->render_page('/ok_answers/ok_answersdetails', $data);
+         $this->layout->render_page('/ok_users/ok_usersdetails', $data);
          // NOTE: If you don't want to use the layout library, use the line below.
-         // $this->load->view('/ok_answers/ok_answersdetails', $data);
+         // $this->load->view('/ok_users/ok_usersdetails', $data);
 
 
       }
@@ -231,11 +275,11 @@ class Ok_answers extends Controller {
    function delete() {
       $idField = $this->uri->segment(3);
 
-      $this->load->model('ok_answersmodel');
-      $the_results = $this->ok_answersmodel->delete_by_pkey($idField);
+      $this->load->model('ok_usersmodel');
+      $the_results = $this->ok_usersmodel->delete_by_pkey($idField);
 
       $this->load->helper('url');
-      redirect('/ok_answers/', 'location');
+      redirect('/ok_users/', 'location');
 
    }
 
@@ -245,7 +289,19 @@ class Ok_answers extends Controller {
       // NOTE: Set default values for the form here if you wish.
       // ///////////////////////////////////////////////////////////////////////
 		$data['id']		= '';
-		$data['answer_text']		= '';
+		$data['role_id']		= '';
+		$data['username']		= '';
+		$data['password']		= '';
+		$data['email']		= '';
+		$data['banned']		= '';
+		$data['ban_reason']		= '';
+		$data['newpass']		= '';
+		$data['newpass_key']		= '';
+		$data['newpass_time']		= '';
+		$data['last_ip']		= '';
+		$data['last_login']		= '';
+		$data['created']		= '';
+		$data['modified']		= '';
 
       return $data;
 
@@ -257,7 +313,19 @@ class Ok_answers extends Controller {
       // ///////////////////////////////////////////////////////////////////////
 		// XXS Filtering enforced for user input
 		$data['id']		= $this->input->post('id', TRUE);
-		$data['answer_text']		= $this->input->post('answer_text', TRUE);
+		$data['role_id']		= $this->input->post('role_id', TRUE);
+		$data['username']		= $this->input->post('username', TRUE);
+		$data['password']		= $this->input->post('password', TRUE);
+		$data['email']		= $this->input->post('email', TRUE);
+		$data['banned']		= $this->input->post('banned', TRUE);
+		$data['ban_reason']		= $this->input->post('ban_reason', TRUE);
+		$data['newpass']		= $this->input->post('newpass', TRUE);
+		$data['newpass_key']		= $this->input->post('newpass_key', TRUE);
+		$data['newpass_time']		= $this->input->post('newpass_time', TRUE);
+		$data['last_ip']		= $this->input->post('last_ip', TRUE);
+		$data['last_login']		= $this->input->post('last_login', TRUE);
+		$data['created']		= $this->input->post('created', TRUE);
+		$data['modified']		= $this->input->post('modified', TRUE);
 
       return $data;
 

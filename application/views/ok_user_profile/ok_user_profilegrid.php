@@ -1,8 +1,8 @@
 <?
    $this->load->helper('url');
-   $modify_url = site_url('ok_answers/modify/');
-   $delete_url = site_url('ok_answers/delete/');
-   $add_url    = site_url('ok_answers/add/');
+   $modify_url = site_url('ok_user_profile/modify/');
+   $delete_url = site_url('ok_user_profile/delete/');
+   $add_url    = site_url('ok_user_profile/add/');
 
 ?>
 <style>
@@ -66,10 +66,10 @@
 
 </style>
 
-<form action='<?= $add_url; ?>' method='POST' id='frmok_answers'>
+<form action='<?= $add_url; ?>' method='POST' id='frmok_user_profile'>
 <table width="100%" border="0" cellspacing="1" cellpadding="0">
 <tr>
-   <th align="left" class="formSecHeader">Browsing ok_answers values</th>
+   <th align="left" class="formSecHeader">Browsing ok_user_profile values</th>
    <th align="right">
     <input class="redbutton" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" type="submit" name='add' id='add' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    </th>
@@ -85,7 +85,13 @@
 		Id
 	</th>
 	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
-		Answer_text
+		User_id
+	</th>
+	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
+		Country
+	</th>
+	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
+		Website
 	</th>
 
 </tr>
@@ -94,18 +100,20 @@
 
       <?
          $i = 0;
-         foreach ($ok_answers_list as $ok_answers) {
+         foreach ($ok_user_profile_list as $ok_user_profile) {
             $i++;
             if (($i%2)==0) { $bgColor = "#FFFFFF"; } else { $bgColor = "#C0C0C0"; }
       ?>
       <tr bgcolor="<?= $bgColor; ?>">
          <td align="center" nowrap="nowrap">
-            <a href = "<?= $modify_url."/".$ok_answers["id"]; ?>" >Edit</a>
+            <a href = "<?= $modify_url."/".$ok_user_profile["id"]; ?>" >Edit</a>
             &nbsp;&nbsp;&nbsp;
-            <a href = "<?= $delete_url."/".$ok_answers["id"]; ?>" >Delete</a>
+            <a href = "<?= $delete_url."/".$ok_user_profile["id"]; ?>" >Delete</a>
          </td>
-   <td align="left" nowrap="nowrap"><?= $ok_answers['id']; ?></td>
-   <td align="left" nowrap="nowrap"><?= $ok_answers['answer_text']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_profile['id']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_profile['user_id']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_profile['country']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_profile['website']; ?></td>
 </tr>
       <? } ?>
 </tbody>

@@ -1,15 +1,15 @@
 <?
-class Ok_answersModel extends Model {
+class Ok_user_profileModel extends Model {
 /**
- * MODULE NAME   : ok_answersmodel.php
+ * MODULE NAME   : ok_user_profilemodel.php
  *
- * DESCRIPTION   : Ok_answers model controller
+ * DESCRIPTION   : Ok_user_profile model controller
  *
  * MODIFICATION HISTORY
- *   V1.0   2009-11-28 11:16 PM   - Pradesh Chanderpaul     - Created
+ *   V1.0   2009-11-28 11:08 PM   - Pradesh Chanderpaul     - Created
  *
- * @package             ok_answers
- * @subpackage          Ok_answers model component Class
+ * @package             ok_user_profile
+ * @subpackage          Ok_user_profile model component Class
  * @author              Pradesh Chanderpaul
  * @copyright           Copyright (c) 2006-2007 DataCraft Software
  * @license             http://www.datacraft.co.za/codecrafter/license.html
@@ -21,10 +21,12 @@ class Ok_answersModel extends Model {
 var $table_record_count;
 
 var $id;
-var $answer_text;
+var $user_id;
+var $country;
+var $website;
 
 
-   function Ok_answersModel()
+   function Ok_user_profileModel()
    {
       parent::Model();
       $this->obj =& get_instance();
@@ -38,7 +40,7 @@ var $answer_text;
 
       // Initialise or clear class variables.
       // NOTE: Not particularly useful unless you are using model persistence
-      $this->_init_Ok_answers();
+      $this->_init_Ok_user_profile();
 
    }
 
@@ -70,7 +72,7 @@ var $answer_text;
       // ///////////////////////////////////////////////////////////////////////
       // Make a note of the current table record count
       // ///////////////////////////////////////////////////////////////////////
-      $this->table_record_count = $this->db->count_all( 'ok_answers' );
+      $this->table_record_count = $this->db->count_all( 'ok_user_profile' );
 
 
       // Filter could be an array or filter values or an SQL string.
@@ -81,48 +83,49 @@ var $answer_text;
          }
          elseif ( is_array($filters) ) {
             // Build your filter rules
-            // ///////////////////////////////////////////////////////////////////////
-            // NOTE: There are many ways to build the select code. (For example, you
-            // NOTE: ...just pass the $filters array to where() like:
-            // NOTE: ...   $this->db->where($filters);
-            // NOTE: ...instead of the foreach loop below. However, it's added to
-            // NOTE: ...allow further customisation.
-            // ///////////////////////////////////////////////////////////////////////
             if ( count($filters) > 0 ) {
                foreach ($filters as $field => $value) {
-                  $this->db->where($field, $value);
+                  $filter_list[] = " $field = '$value' ";
                }
+               $where_clause = ' WHERE ' . join(' AND ', $filter_list );
             }
          }
 
       }
 
+      $limit_clause = '';
       if ($start) {
          if ($count) {
-            $this->db->limit($start, $count);
+            $limit_clause = " LIMIT $start, $count ";
          }
          else {
-            $this->db->limit($start);
+            $limit_clause = " LIMIT $start ";
          }
       }
 
+      // Build up the SQL query string and run the query
+      $sql = 'SELECT * FROM ok_user_profile ' . $where_clause . $limit_clause;
 
-      // ///////////////////////////////////////////////////////////////////////
-      // NOTE: If you want the results ordered by a specific field, do it here.
-      // ///////////////////////////////////////////////////////////////////////
-      // $this->db->orderby();
-
-      $query = $this->db->get( 'ok_answers' );
+      $query = $this->db->query($sql);
 
       if ($query->num_rows() > 0) {
-         // return $query->result_array();
+         // ////////////////////////////////////////////////////////////////////
+         // NOTE: At this stage you could return the entire result set, like:
+         // NOTE: ...return $query->result_array();
+         // NOTE: ...The generated code loops through the result set to provide
+         // NOTE: ...the oppurtunity to provide further customisations on the
+         // NOTE: ...code (especially if you are generating in verbose mode).
+         // ////////////////////////////////////////////////////////////////////
+
          foreach ($query->result_array() as $row)      // Go through the result set
          {
             // Build up a list for each column from the database and place it in
             // ...the result set
 
 			$query_results['id']		 = $row['id'];
-			$query_results['answer_text']		 = $row['answer_text'];
+			$query_results['user_id']		 = $row['user_id'];
+			$query_results['country']		 = $row['country'];
+			$query_results['website']		 = $row['website'];
 
 			$results[]		 = $query_results;
 
@@ -144,16 +147,15 @@ var $answer_text;
       // Load  the db library
       $this->load->database();
 
-      $this->db->where( 'id', "$idField");
-      $this->db->limit( 1 );
-      $query = $this->db->get( 'ok_answers' );
-
+      $query = $this->db->query("SELECT * FROM ok_user_profile WHERE id = '$idField' LIMIT 1");
 
       if ($query->num_rows() > 0) {
          $row = $query->row_array();
 
 		$query_results['id']		 = $row['id'];
-		$query_results['answer_text']		 = $row['answer_text'];
+		$query_results['user_id']		 = $row['user_id'];
+		$query_results['country']		 = $row['country'];
+		$query_results['website']		 = $row['website'];
 
 		$results		 = $query_results;
 
@@ -172,34 +174,41 @@ var $answer_text;
       // Load the database library
       $this->load->database();
 
-      $this->db->insert('ok_answers', $data);
+      // Build up the SQL query string
+      $sql = $this->db->insert_string('ok_user_profile', $data);
+
+      $query = $this->db->query($sql);
 
       return $this->db->insert_id();
    }
 
    function modify($keyvalue, $data) {
 
+
       // Load the database library
       $this->load->database();
 
-      $this->db->where('id', $keyvalue);
-      $this->db->update('ok_answers', $data);
+      // Build up the SQL query string
+      $where = "id = $keyvalue";
+      $sql = $this->db->update_string('ok_user_profile', $data, $where);
+
+      $query = $this->db->query($sql);
 
    }
 
-   function delete_by_pkey($idField) {
+   function delete_by_pkey($idField)
+   {
       // Load  the db library
       $this->load->database();
 
       // ///////////////////////////////////////////////////////////////////////
       // TODO: Just to eliminate nasty mishaps, the delete query has been
       // TODO: ...deliberately disabled. Enable it if you mean to by uncommenting
-      // TODO: ...the database calls below
+      // TODO: ...the query function call below
       // ///////////////////////////////////////////////////////////////////////
-      // $this->db->where('id', $idField);
-      // $this->db->delete('ok_answers');
+      // $query = $this->db->query("DELETE FROM ok_user_profile WHERE id = '$idField' ");
 
-      return true;
+     return true;
 
    }
 
@@ -209,21 +218,35 @@ var $answer_text;
 	function set_Id($id) {
 		$this->id = $id;	}
 
-	function get_Answer_text() {
-		return $this->answer_text;	}
+	function get_User_id() {
+		return $this->user_id;	}
 
-	function set_Answer_text($answer_text) {
-		$this->answer_text = $answer_text;	}
+	function set_User_id($user_id) {
+		$this->user_id = $user_id;	}
+
+	function get_Country() {
+		return $this->country;	}
+
+	function set_Country($country) {
+		$this->country = $country;	}
+
+	function get_Website() {
+		return $this->website;	}
+
+	function set_Website($website) {
+		$this->website = $website;	}
 
 
 
       // Function used to initilialise class variables.
       // NOTE: Not particularly useful unless you are using model persistence
       // NOTE: You may want to add default values here.
-      function _init_Ok_answers()
+      function _init_Ok_user_profile()
       {
 		$this->id = "";
-		$this->answer_text = "";
+		$this->user_id = "";
+		$this->country = "";
+		$this->website = "";
 
       }
 
@@ -231,10 +254,12 @@ var $answer_text;
       // Function used to initilialise class variables.
       // NOTE: Not particularly useful unless you are using model persistence
       // NOTE: You could add default values here, but fields are generally set empty
-      function _emptyOk_answers()
+      function _emptyOk_user_profile()
       {
 		$this->id = "";
-		$this->answer_text = "";
+		$this->user_id = "";
+		$this->country = "";
+		$this->website = "";
 
       }
 

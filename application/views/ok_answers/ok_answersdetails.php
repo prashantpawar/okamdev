@@ -25,23 +25,6 @@ $action_url = site_url() . "/ok_answers/$action/";
                <textarea cols=35 rows=7 NAME='answer_text' id='answer_text' ><?= $answer_text; ?></textarea>
             </td>
          </tr>
-	<tr valign='top' height='20'>
-
-            <td align='right'> <b> question_id:  </b> </td>
-
-            <td>
-               <select name="question_id" id="question_id" >
-				<option value="">Choose Ok_questions</option><?
-			 foreach ($ok_questionslist as $ok_questions) {
-				$lookupid   = $ok_questions["id"];
-				$lookuptext   = $ok_questions["question_text"];
-?>
-				<option value="<?= $lookupid; ?>" <?= ($lookupid == $question_id)?"selected=selected":""; ?> ><?= $lookuptext; ?></option>
-<?			 } ?>
-			</select>
-
-            </td>
-         </tr>
 
 
 </table>

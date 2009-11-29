@@ -1,14 +1,14 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * MODULE NAME   : Ok_answers.php
+ * MODULE NAME   : Ok_user_autologin.php
  *
- * DESCRIPTION   : Ok_answers module controller
+ * DESCRIPTION   : Ok_user_autologin module controller
  *
  * MODIFICATION HISTORY
- *   V1.0   2009-11-28 11:16 PM   - Pradesh Chanderpaul     - Created
+ *   V1.0   2009-11-28 11:09 PM   - Pradesh Chanderpaul     - Created
  *
- * @package             Ok_answers
- * @subpackage          ok_answers component Class
+ * @package             Ok_user_autologin
+ * @subpackage          ok_user_autologin component Class
  * @author              Pradesh Chanderpaul
  * @copyright           Copyright (c) 2006-2007 DataCraft Software
  * @license             http://www.datacraft.co.za/codecrafter/license.html
@@ -17,7 +17,7 @@
  * @filesource
  */
 
-class Ok_answers extends Controller {
+class Ok_user_autologin extends Controller {
 
    /**
    * Contructor function
@@ -27,7 +27,7 @@ class Ok_answers extends Controller {
    * @access      public
    * @return      none
    */
-   function Ok_answers() {
+   function Ok_user_autologin() {
       parent::Controller();
    }
 
@@ -55,14 +55,14 @@ class Ok_answers extends Controller {
    // //////////////////////////////////////////////////////////////////////////
    // Function: showall()
    //
-   // Description: Extracts a list of all ok_answers data records and displays it.
+   // Description: Extracts a list of all ok_user_autologin data records and displays it.
    //
    // //////////////////////////////////////////////////////////////////////////
    function browse() {
 
       // ///////////////////////////////////////////////////////////////////////
       // Request the list from database. This is done by creating an instance of
-      // ...the ok_answers model and sending it a 'retrievelist' request.
+      // ...the ok_user_autologin model and sending it a 'retrievelist' request.
       // ///////////////////////////////////////////////////////////////////////
 
       // ///////////////////////////////////////////////////////////////////////
@@ -73,9 +73,9 @@ class Ok_answers extends Controller {
       $start = $this->uri->segment(3,0);
       $limit_per_page = 10;
 
-      $this->load->model('ok_answersmodel');                  // Instantiate the model
-      $the_results['ok_answers_list'] = $this->ok_answersmodel->findAll($start, $limit_per_page);  // Send the retrievelist msg
-      // $the_results['rowcount'] = count($the_results['ok_answers_list']);
+      $this->load->model('ok_user_autologinmodel');                  // Instantiate the model
+      $the_results['ok_user_autologin_list'] = $this->ok_user_autologinmodel->findAll($start, $limit_per_page);  // Send the retrievelist msg
+      // $the_results['rowcount'] = count($the_results['ok_user_autologin_list']);
 
       // ///////////////////////////////////////////////////////////////////////
       // NOTE: Set up the paging links. Just remove this if you don't need it,
@@ -84,8 +84,8 @@ class Ok_answers extends Controller {
       $this->load->library('pagination');
       $this->load->helper('url');
 
-      $config['base_url']     = site_url('ok_answers/showall/');   // or just /ok_answers/
-      $config['total_rows']   = $this->ok_answersmodel->table_record_count;
+      $config['base_url']     = site_url('ok_user_autologin/showall/');   // or just /ok_user_autologin/
+      $config['total_rows']   = $this->ok_user_autologinmodel->table_record_count;
       $config['per_page']     = $limit_per_page;
 
       $this->pagination->initialize($config);
@@ -99,16 +99,16 @@ class Ok_answers extends Controller {
       // ///////////////////////////////////////////////////////////////////////
       $this->load->library('layout');
 
-      $this->layout->render_page('/ok_answers/ok_answersgrid', $the_results);
+      $this->layout->render_page('/ok_user_autologin/ok_user_autologingrid', $the_results);
       // NOTE: If you don't want to use the layout library, use the line below.
-      // $this->load->view('/ok_answers/ok_answersgrid', $the_results);
+      // $this->load->view('/ok_user_autologin/ok_user_autologingrid', $the_results);
 
    }
 
    // //////////////////////////////////////////////////////////////////////////
    // Function: add()
    //
-   // Description: Prompts user for input and adds a new ok_answers entry
+   // Description: Prompts user for input and adds a new ok_user_autologin entry
    //              ...onto the database.
    //
    // //////////////////////////////////////////////////////////////////////////
@@ -127,39 +127,49 @@ class Ok_answers extends Controller {
          // User is submitting data
          // Store the values from the form onto the db
          // ////////////////////////////////////////////////////////////////////
-         $this->load->model('ok_answersmodel');
+         $this->load->model('ok_user_autologinmodel');
 
          /*
 		// XXS Filtering enforced for user input
-		$data['id']		= $this->input->post('id', TRUE);
-		$data['answer_text']		= $this->input->post('answer_text', TRUE);
+		$data['key_id']		= $this->input->post('key_id', TRUE);
+		$data['user_id']		= $this->input->post('user_id', TRUE);
+		$data['user_agent']		= $this->input->post('user_agent', TRUE);
+		$data['last_ip']		= $this->input->post('last_ip', TRUE);
+		$data['last_login']		= $this->input->post('last_login', TRUE);
 
          */
          $data = $this->_get_form_values();
 
-         $this->ok_answersmodel->add($data);
+         $this->ok_user_autologinmodel->add($data);
 
          // $this->load->helper('url');
-         redirect('/ok_answers/', 'location');
+         redirect('/ok_user_autologin/', 'location');
 
       }
       else {
          // We have to show the user the input form
          /*
-		$data['id']		= '';
-		$data['answer_text']		= '';
+		$data['key_id']		= '';
+		$data['user_id']		= '';
+		$data['user_agent']		= '';
+		$data['last_ip']		= '';
+		$data['last_login']		= '';
 
          */
          $data = $this->_clear_form();
          $data['action']       = 'add';
 
+		// Retrieve the ok_users lookup values.
+		$this->load->model('ok_usersmodel');
+		$data['ok_userslist'] = $this->ok_usersmodel->findAll();
+
 
 
          // Call upon the layout library to draw the input screen
          $this->load->library('layout');
-         $this->layout->render_page('/ok_answers/ok_answersdetails', $data);
+         $this->layout->render_page('/ok_user_autologin/ok_user_autologindetails', $data);
          // NOTE: If you don't want to use the layout library, use the line below.
-         // $this->load->view('/ok_answers/ok_answersdetails', $data);
+         // $this->load->view('/ok_user_autologin/ok_user_autologindetails', $data);
 
 
       }
@@ -185,20 +195,23 @@ class Ok_answers extends Controller {
          // User is submitting data
          // Store the values from the form onto the db
          // ////////////////////////////////////////////////////////////////////
-         $this->load->model('ok_answersmodel');
+         $this->load->model('ok_user_autologinmodel');
 
          // $data['action']          = 'modify';
          /*
 		// XXS Filtering enforced for user input
-		$data['id']		= $this->input->post('id', TRUE);
-		$data['answer_text']		= $this->input->post('answer_text', TRUE);
+		$data['key_id']		= $this->input->post('key_id', TRUE);
+		$data['user_id']		= $this->input->post('user_id', TRUE);
+		$data['user_agent']		= $this->input->post('user_agent', TRUE);
+		$data['last_ip']		= $this->input->post('last_ip', TRUE);
+		$data['last_login']		= $this->input->post('last_login', TRUE);
 
          */
          $data = $this->_get_form_values();
 
-         $this->ok_answersmodel->modify($data['id'], $data);
+         $this->ok_user_autologinmodel->modify($data['key_id'], $data);
 
-         redirect('/ok_answers/', 'location');
+         redirect('/ok_user_autologin/', 'location');
 
       }
       else {
@@ -206,16 +219,20 @@ class Ok_answers extends Controller {
 
          $idField = $this->uri->segment(3);
 
-         $this->load->model('ok_answersmodel');
-         $data = $this->ok_answersmodel->retrieve_by_pkey($idField);
+         $this->load->model('ok_user_autologinmodel');
+         $data = $this->ok_user_autologinmodel->retrieve_by_pkey($idField);
          $data['action'] = 'modify';
+
+		// Retrieve the ok_users lookup values.
+		$this->load->model('ok_usersmodel');
+		$data['ok_userslist'] = $this->ok_usersmodel->findAll();
 
 
 
          $this->load->library('layout');
-         $this->layout->render_page('/ok_answers/ok_answersdetails', $data);
+         $this->layout->render_page('/ok_user_autologin/ok_user_autologindetails', $data);
          // NOTE: If you don't want to use the layout library, use the line below.
-         // $this->load->view('/ok_answers/ok_answersdetails', $data);
+         // $this->load->view('/ok_user_autologin/ok_user_autologindetails', $data);
 
 
       }
@@ -231,11 +248,11 @@ class Ok_answers extends Controller {
    function delete() {
       $idField = $this->uri->segment(3);
 
-      $this->load->model('ok_answersmodel');
-      $the_results = $this->ok_answersmodel->delete_by_pkey($idField);
+      $this->load->model('ok_user_autologinmodel');
+      $the_results = $this->ok_user_autologinmodel->delete_by_pkey($idField);
 
       $this->load->helper('url');
-      redirect('/ok_answers/', 'location');
+      redirect('/ok_user_autologin/', 'location');
 
    }
 
@@ -244,8 +261,11 @@ class Ok_answers extends Controller {
       // ///////////////////////////////////////////////////////////////////////
       // NOTE: Set default values for the form here if you wish.
       // ///////////////////////////////////////////////////////////////////////
-		$data['id']		= '';
-		$data['answer_text']		= '';
+		$data['key_id']		= '';
+		$data['user_id']		= '';
+		$data['user_agent']		= '';
+		$data['last_ip']		= '';
+		$data['last_login']		= '';
 
       return $data;
 
@@ -256,8 +276,11 @@ class Ok_answers extends Controller {
       // NOTE: Perform customisation on the retrieved form values here if you wish.
       // ///////////////////////////////////////////////////////////////////////
 		// XXS Filtering enforced for user input
-		$data['id']		= $this->input->post('id', TRUE);
-		$data['answer_text']		= $this->input->post('answer_text', TRUE);
+		$data['key_id']		= $this->input->post('key_id', TRUE);
+		$data['user_id']		= $this->input->post('user_id', TRUE);
+		$data['user_agent']		= $this->input->post('user_agent', TRUE);
+		$data['last_ip']		= $this->input->post('last_ip', TRUE);
+		$data['last_login']		= $this->input->post('last_login', TRUE);
 
       return $data;
 

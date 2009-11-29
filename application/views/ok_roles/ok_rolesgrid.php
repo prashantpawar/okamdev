@@ -1,8 +1,8 @@
 <?
    $this->load->helper('url');
-   $modify_url = site_url('ok_answers/modify/');
-   $delete_url = site_url('ok_answers/delete/');
-   $add_url    = site_url('ok_answers/add/');
+   $modify_url = site_url('ok_roles/modify/');
+   $delete_url = site_url('ok_roles/delete/');
+   $add_url    = site_url('ok_roles/add/');
 
 ?>
 <style>
@@ -66,10 +66,10 @@
 
 </style>
 
-<form action='<?= $add_url; ?>' method='POST' id='frmok_answers'>
+<form action='<?= $add_url; ?>' method='POST' id='frmok_roles'>
 <table width="100%" border="0" cellspacing="1" cellpadding="0">
 <tr>
-   <th align="left" class="formSecHeader">Browsing ok_answers values</th>
+   <th align="left" class="formSecHeader">Browsing ok_roles values</th>
    <th align="right">
     <input class="redbutton" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" type="submit" name='add' id='add' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    </th>
@@ -85,7 +85,10 @@
 		Id
 	</th>
 	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
-		Answer_text
+		Parent_id
+	</th>
+	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
+		Name
 	</th>
 
 </tr>
@@ -94,18 +97,19 @@
 
       <?
          $i = 0;
-         foreach ($ok_answers_list as $ok_answers) {
+         foreach ($ok_roles_list as $ok_roles) {
             $i++;
             if (($i%2)==0) { $bgColor = "#FFFFFF"; } else { $bgColor = "#C0C0C0"; }
       ?>
       <tr bgcolor="<?= $bgColor; ?>">
          <td align="center" nowrap="nowrap">
-            <a href = "<?= $modify_url."/".$ok_answers["id"]; ?>" >Edit</a>
+            <a href = "<?= $modify_url."/".$ok_roles["id"]; ?>" >Edit</a>
             &nbsp;&nbsp;&nbsp;
-            <a href = "<?= $delete_url."/".$ok_answers["id"]; ?>" >Delete</a>
+            <a href = "<?= $delete_url."/".$ok_roles["id"]; ?>" >Delete</a>
          </td>
-   <td align="left" nowrap="nowrap"><?= $ok_answers['id']; ?></td>
-   <td align="left" nowrap="nowrap"><?= $ok_answers['answer_text']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_roles['id']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_roles['parent_id']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_roles['name']; ?></td>
 </tr>
       <? } ?>
 </tbody>

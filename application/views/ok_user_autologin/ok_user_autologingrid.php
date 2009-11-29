@@ -1,8 +1,8 @@
 <?
    $this->load->helper('url');
-   $modify_url = site_url('ok_answers/modify/');
-   $delete_url = site_url('ok_answers/delete/');
-   $add_url    = site_url('ok_answers/add/');
+   $modify_url = site_url('ok_user_autologin/modify/');
+   $delete_url = site_url('ok_user_autologin/delete/');
+   $add_url    = site_url('ok_user_autologin/add/');
 
 ?>
 <style>
@@ -66,10 +66,10 @@
 
 </style>
 
-<form action='<?= $add_url; ?>' method='POST' id='frmok_answers'>
+<form action='<?= $add_url; ?>' method='POST' id='frmok_user_autologin'>
 <table width="100%" border="0" cellspacing="1" cellpadding="0">
 <tr>
-   <th align="left" class="formSecHeader">Browsing ok_answers values</th>
+   <th align="left" class="formSecHeader">Browsing ok_user_autologin values</th>
    <th align="right">
     <input class="redbutton" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" type="submit" name='add' id='add' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    </th>
@@ -82,10 +82,19 @@
 <tr>
 	<th align="right" width="70"> &nbsp; sort by:&nbsp; </th>
 	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
-		Id
+		Key_id
 	</th>
 	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
-		Answer_text
+		User_id
+	</th>
+	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
+		User_agent
+	</th>
+	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
+		Last_ip
+	</th>
+	<th VALIGN='MIDDLE' ALIGN='CENTER'  class='tbl_headercell'>
+		Last_login
 	</th>
 
 </tr>
@@ -94,18 +103,21 @@
 
       <?
          $i = 0;
-         foreach ($ok_answers_list as $ok_answers) {
+         foreach ($ok_user_autologin_list as $ok_user_autologin) {
             $i++;
             if (($i%2)==0) { $bgColor = "#FFFFFF"; } else { $bgColor = "#C0C0C0"; }
       ?>
       <tr bgcolor="<?= $bgColor; ?>">
          <td align="center" nowrap="nowrap">
-            <a href = "<?= $modify_url."/".$ok_answers["id"]; ?>" >Edit</a>
+            <a href = "<?= $modify_url."/".$ok_user_autologin["key_id"]; ?>" >Edit</a>
             &nbsp;&nbsp;&nbsp;
-            <a href = "<?= $delete_url."/".$ok_answers["id"]; ?>" >Delete</a>
+            <a href = "<?= $delete_url."/".$ok_user_autologin["key_id"]; ?>" >Delete</a>
          </td>
-   <td align="left" nowrap="nowrap"><?= $ok_answers['id']; ?></td>
-   <td align="left" nowrap="nowrap"><?= $ok_answers['answer_text']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_autologin['key_id']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_autologin['user_id']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_autologin['user_agent']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_autologin['last_ip']; ?></td>
+   <td align="left" nowrap="nowrap"><?= $ok_user_autologin['last_login']; ?></td>
 </tr>
       <? } ?>
 </tbody>

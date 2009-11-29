@@ -26,10 +26,10 @@ h1 {
 
 </style>
 <? $this->load->helper('url'); ?>
-<div class='suckerdiv'><ul id='navigator'><li>ok_dnas
+<div class='suckerdiv'><ul id='navigator'><li>ok_roles
                   <ul>
-                     <li><a href='<?= site_url('ok_dnas'); ?>'>Browse</a></li>
-                     <li><a href='<?= site_url('ok_dnas' . '/add/'); ?>'>Add New</a></li>
-                     <li><a href='<?= site_url('ok_dnas' . '/find/'); ?>'>Find (not yet)</a></li>
+                     <li><a href='<?= site_url('ok_roles'); ?>'>Browse</a></li>
+                     <li><a href='<?= site_url('ok_roles' . '/add/'); ?>'>Add New</a></li>
+                     <li><a href='<?= site_url('ok_roles' . '/find/'); ?>'>Find (not yet)</a></li>
                   </ul>
                   </li></ul></div>
