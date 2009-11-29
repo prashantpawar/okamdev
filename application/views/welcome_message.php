@@ -39,20 +39,41 @@ code {
  padding: 12px 10px 12px 10px;
 }
 
+.container { width: 950px; margin: 0 auto; }
+.column { float: left; margin-right: 10px; }
+.span-17 { width: 670px; }
+.last { margin-right: 0; }
+.span-7 { width: 270px; }
+
 </style>
 </head>
 <body>
 
+<div class='container'>
+  <div class='column span-17'>
+  </div>
+  <div class='column last span-7'>
+  </div>
+</div>
+<div class='container'>
 <h1>Welcome to CodeIgniter!</h1>
-
-<code><?= $flash?></code>
-<?php
+</div>
+<div class='container'>
+  <div class='column span-17'>
+  <code><?= $flash?></code>
+  <?php
 if($displaylink){
     echo "<a href=\"".site_url('auth/login')."\" >Login</a>";
 }else{
     echo "<a href=\"".site_url('auth/logout')."\" >Logout</a>";
 }
 ?>
+  </div>
+  <div class='column last span-7'>
+  </div>
+</div>
 
+<div class='container'>
+</div> 
 </body>
 </html>
