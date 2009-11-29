@@ -45,11 +45,13 @@ code {
 
 <h1>Welcome to CodeIgniter!</h1>
 
-<code><?= $flash?></code>
 <?php
-if($displaylink){
+if(!$loggedin){
     echo "<a href=\"".site_url('auth/login')."\" >Login</a>";
 }else{
+?>
+<code>Welcome <?= $username?></code>
+<?
     echo "<a href=\"".site_url('auth/logout')."\" >Logout</a>";
 }
 ?>

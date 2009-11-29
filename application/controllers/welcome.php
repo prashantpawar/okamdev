@@ -12,9 +12,9 @@ class Welcome extends Controller {
 	function index()
 	{
         if(!$this->dx_auth->is_logged_in()){
-            $this->load->view('welcome_message',array('flash'=>'Not logged in','displaylink'=>true));
+            $this->load->view('welcome_message',array('loggedin'=>false));
         }else{    
-            $this->load->view('welcome_message',array('flash'=>'Welcome '.$this->dx_auth->get_username(),'displaylink'=>false));
+            $this->load->view('welcome_message',array('loggedin'=>true,'username'=>$this->dx_auth->get_username()));
         }
 	}
 }
