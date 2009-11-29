@@ -42,7 +42,12 @@ code {
 </style>
 </head>
 <body>
-
+<blockquote><?= $flash?></blockquote>
+<?php
+if($displaylink){
+    echo "<a href=\"".site_url('auth/login')."\" >Login</a>";
+}
+?>
 <h1>Welcome to CodeIgniter!</h1>
 
 <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
