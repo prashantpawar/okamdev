@@ -56,19 +56,15 @@ code {
   </div>
 </div>
 <div class='container'>
-<h1>Welcome to CodeIgniter!</h1>
-<<<<<<< HEAD
-
-<?php
-if(!$loggedin){
-=======
 </div>
 <div class='container'>
   <div class='column span-17'>
-  <code><?= $flash?></code>
-  <?php
-if($displaylink){
->>>>>>> 16cfe7007956c65e49a1619e88eee78a21f8215b
+
+<?php
+if(!$loggedin){
+?>
+<code>Welcome</code>
+<?php
     echo "<a href=\"".site_url('auth/login')."\" >Login</a>";
 }else{
 ?>
