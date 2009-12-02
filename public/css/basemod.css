@@ -15,7 +15,7 @@
 
   /* (en) Marginal areas & page background */
   /* (de) Randbereiche & Seitenhintergrund */
-  body { background: #4d87c7 url("images/bg_blue.gif") repeat-x top left fixed; padding: 10px 0; }
+  body { background: #2689be repeat-x top left fixed; padding: 10px 0; }
 
   /* Layout Alignment | Layout-Ausrichtung */
   .page_margins { margin: 0 auto; }
@@ -23,12 +23,12 @@
   /* Layout Properties | Layout-Eigenschaften */
   .page_margins { width: auto;  min-width: 740px; max-width: 90em; background: #fff; }
   .page { padding: 10px; }
-  #header { padding: 45px 2em 1em 20px; color: #000; background: #fff; }
+  #header { padding: 45px 2em 1em 20px; color: #000; background: #2689be; }
   #topnav { color: #aaa; background: transparent; }
   #nav { overflow:hidden; }
   div.hlist {  }
   #main { margin: 10px 0; background: #fff; }
-  #footer { padding: 10px 20px; color:#666; background: #f9f9f9; border-top: 5px #efefef solid; }
+  #footer { padding: 5px 10px; color:#ffffff;  border-top: 3px #efefef solid; font-family:Calibri;}
 
   /* (en) navigation: horizontal adjustment | (de) horizontale Ausrichtung  */
   #nav ul { margin-left: 20px; }
@@ -41,15 +41,90 @@
    *
    */
 
-  #col1 { float: left; width: 25%}
+  #col1 { float: left; width: 15%;color:#ffffff;}
   #col2 { display:none}
-  #col3 { width: auto; margin: 0 0 0 25%}
-  #col1_content { padding: 0 10px 0 20px }
-  #col3_content { padding: 0 20px 0 10px }
+  #col3 { width: auto; margin: 0 0 0 15%}
+  #col1_content { padding: 0 10px 0 20px; background: #2689be; font-family:Calibri; font-weight:800;}
+  #col3_content { padding: 0 20px 0 10px; font-family:Calibri; }
 
 
   /* set column dividers */ 
   #col3 { border-left: 1px #ddd dotted }
-	
+
+  /* col1 rounded corners*/
+  .sidebar{display:block}
+  .sidebar *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;
+  background:#2689be}
+  .sidebar1{
+  margin-left:3px;
+  margin-right:3px;
+  padding-left:1px;
+  padding-right:1px;
+  border-left:1px solid #a1cce3;
+  border-right:1px solid #a1cce3;
+  background:#5ca6ce}
+  .sidebar2{
+  margin-left:1px;
+  margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+  border-left:1px solid #e9f3f8;
+  border-right:1px solid #e9f3f8;
+  background:#4f9fca}
+  .sidebar3{
+  margin-left:1px;
+  margin-right:1px;
+  border-left:1px solid #4f9fca;
+  border-right:1px solid #4f9fca;}
+  .sidebar4{
+  border-left:1px solid #a1cce3;
+  border-right:1px solid #a1cce3}
+  .sidebar5{
+  border-left:1px solid #5ca6ce;
+  border-right:1px solid #5ca6ce}
+  .sidebarfg{
+  background:#2689be}
+
+  .rrect{display:block}
+  .rrect *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;
+  background:#2689be}
+  .rrect1{
+  margin-left:3px;
+  margin-right:3px;
+  padding-left:1px;
+  padding-right:1px;
+  border-left:1px solid #a1cce3;
+  border-right:1px solid #a1cce3;
+  background:#5ca6ce}
+  .rrect2{
+  margin-left:1px;
+  margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+  border-left:1px solid #e9f3f8;
+  border-right:1px solid #e9f3f8;
+  background:#4f9fca}
+  .rrect3{
+  margin-left:1px;
+  margin-right:1px;
+  border-left:1px solid #4f9fca;
+  border-right:1px solid #4f9fca;}
+  .rrect4{
+  border-left:1px solid #a1cce3;
+  border-right:1px solid #a1cce3}
+  .rrect5{
+  border-left:1px solid #5ca6ce;
+  border-right:1px solid #5ca6ce}
+  .rrectfg{
+  background:#2689be}
+
   /*-------------------------------------------------------------------------*/
 }

@@ -15,8 +15,15 @@
 
 /* import screen layout | Screen-Layout einbinden */
 @import url(../yaml/navigation/nav_shinybuttons.css);
-@import url(screen/basemod.css);
-@import url(screen/content.css);
+@import url(basemod.css);
+@import url(content.css);
 
 /* import print layout | Druck-Layout einbinden */
 @import url(../yaml/print/print_draft.css);
+
+  h1.siteheader{
+    width:310px;
+    height:92px;
+    background: url(../images/logo.png);
+    text-indent: -9999px;
+  }
