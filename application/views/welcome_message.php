@@ -1,41 +1,79 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Welcome to CodeIgniter</title>
-
-<link rel="stylesheet" href="<?=base_url();?>public/css/default.css" type="text/css" media="screen"/> 
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>Your Page Title</title>
+<!-- add your meta tags here -->
+<link href="<?=base_url();?>public/css/my_layout.css" rel="stylesheet" type="text/css" />
+<!--[if lte IE 7]>
+<link href="<?=base_url();?>public/css/patches/patch_my_layout.css" rel="stylesheet" type="text/css" />
+<![endif]-->
 </head>
 <body>
-
-<div class='container'>
-  <div class='column span-17'>
+  <div class="page_margins">
+    <div class="page">
+      <div id="header">
+        <div id="topnav">
+          <!-- start: skip link navigation -->
+          <a class="skip" title="skip link" href="#navigation">Skip to the navigation</a><span class="hideme">.</span>
+          <a class="skip" title="skip link" href="#content">Skip to the content</a><span class="hideme">.</span>
+          <!-- end: skip link navigation --><a href="#">Login</a> | <a href="#">Contact</a> | <a href="#">Imprint</a>
+        </div>
+        <h1>Kamdev</h1>
+      </div>
+      <div id="nav">
+        <!-- skiplink anchor: navigation -->
+        <a id="navigation" name="navigation"></a>
+        <div class="hlist">
+          <!-- main navigation: horizontal list -->
+          <ul>
+            <li class="active"><strong>Button 1</strong></li>
+            <li><a href="#">Button 2</a></li>
+            <li><a href="#">Button 3</a></li>
+            <li><a href="#">Button 4</a></li>
+            <li><a href="#">Button 5</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="main">
+        <div id="col1">
+          <div id="col1_content" class="clearfix">
+            <!-- add your content here -->
+            <ul>
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+              <li>List Item 3</li>
+              <li>List Item 4</li>
+              <li>List Item 5</li>
+            </ul>
+          </div>
+        </div>
+        <div id="col3">
+          <div id="col3_content" class="clearfix">
+            <!-- add your content here -->
+            <p><?php
+                if(!$loggedin){
+              ?>
+              <H1>Welcome</h1>
+              <?php
+                  echo "<a href=\"".site_url('auth/login')."\" >Login</a>";
+                }else{
+              ?>
+              <h1>Welcome <?= $username?></h1>
+              <?
+                  echo "<a href=\"".site_url('auth/logout')."\" >Logout</a>";
+                }
+              ?></p>
+          </div>
+          <!-- IE Column Clearing -->
+          <div id="ie_clearing">   </div>
+        </div>
+      </div>
+      <!-- begin: #footer -->
+      <div id="footer">
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>Layout based on <a href="http://www.yaml.de/">YAML</a>
+      </div>
+    </div>
   </div>
-  <div class='column last span-7'>
-  </div>
-</div>
-<div class='container'>
-</div>
-<div class='container'>
-  <div class='column span-17'>
-
-<?php
-if(!$loggedin){
-?>
-<code>Welcome</code>
-<?php
-    echo "<a href=\"".site_url('auth/login')."\" >Login</a>";
-}else{
-?>
-<code>Welcome <?= $username?></code>
-<?
-    echo "<a href=\"".site_url('auth/logout')."\" >Logout</a>";
-}
-?>
-  </div>
-  <div class='column last span-7'>
-  </div>
-</div>
-
-<div class='container'>
-</div> 
 </body>
 </html>
