@@ -27,11 +27,11 @@
         <div class="hlist">
           <!-- main navigation: horizontal list -->
           <ul>
-            <li class="active"><strong>Button 1</strong></li>
-            <li><a href="#">Button 2</a></li>
-            <li><a href="#">Button 3</a></li>
-            <li><a href="#">Button 4</a></li>
-            <li><a href="#">Button 5</a></li>
+            <li <? if($page=='welcome') echo 'class="active"'; ?>><strong>Welcome</strong></li>
+            <li <? if($page=='question') echo 'class="active"'; ?>><?= anchor('questions/view','Questions');?></li>
+            <li <? if($page=='welcome') echo 'class="active"'; ?>><a href="#">Button 3</a></li>
+            <li <? if($page=='welcome') echo 'class="active"'; ?>><a href="#">Button 4</a></li>
+            <li <? if($page=='welcome') echo 'class="active"'; ?>><a href="#">Button 5</a></li>
           </ul>
         </div>
       </div>
@@ -51,3 +51,11 @@
         <div id="col3">
           <div id="col3_content" class="clearfix">
             <!-- add your content here -->
+            <b class="rrect">
+  			<b class="rrect1"><b></b></b>
+  			<b class="rrect2"><b></b></b>
+  			<b class="rrect3"></b>
+  			<b class="rrect4"></b>
+  			<b class="rrect5"></b></b>
+
+  			<div class="rrectfg">

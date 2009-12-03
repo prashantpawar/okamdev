@@ -1,3 +1,11 @@
+			</div>
+
+  			<b class="rrect">
+  			<b class="rrect5"></b>
+  			<b class="rrect4"></b>
+  			<b class="rrect3"></b>
+  			<b class="rrect2"><b></b></b>
+  			<b class="rrect1"><b></b></b></b>
           </div>
           <!-- IE Column Clearing -->
           <div id="ie_clearing">   </div>

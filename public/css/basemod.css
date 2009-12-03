@@ -21,14 +21,14 @@
   .page_margins { margin: 0 auto; }
 
   /* Layout Properties | Layout-Eigenschaften */
-  .page_margins { width: auto;  min-width: 740px; max-width: 90em; background: #fff; }
+  .page_margins { width: auto;  min-width: 740px; max-width: 90em; background: #2689be; }
   .page { padding: 10px; }
   #header { padding: 45px 2em 1em 20px; color: #000; background: #2689be; }
   #topnav { color: #aaa; background: transparent; }
   #nav { overflow:hidden; }
   div.hlist {  }
   #main { margin: 10px 0; background: #fff; }
-  #footer { padding: 5px 10px; color:#ffffff;  border-top: 3px #efefef solid; font-family:Calibri;}
+  #footer { padding: 5px 10px; color:#2689be;  border-top: 3px #efefef solid; font-family:Calibri; font-weight:800;}
 
   /* (en) navigation: horizontal adjustment | (de) horizontale Ausrichtung  */
   #nav ul { margin-left: 20px; }
@@ -95,7 +95,7 @@
   height:1px;
   overflow:hidden;
   font-size:.01em;
-  background:#2689be}
+  background:#fff}
   .rrect1{
   margin-left:3px;
   margin-right:3px;
@@ -124,7 +124,7 @@
   border-left:1px solid #5ca6ce;
   border-right:1px solid #5ca6ce}
   .rrectfg{
-  background:#2689be}
+  background:#fff}
 
   /*-------------------------------------------------------------------------*/
 }

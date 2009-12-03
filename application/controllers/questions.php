@@ -14,6 +14,9 @@ class Questions extends Controller {
      */
     function view($username = NULL, $start = 0, $pageSize = self::DEFAULT_QUESTIONS_PAGE_SIZE) {
         // Get a list of questions/answers which are already answered by the user
+        $this->load->view('header',array('page'=>'question'));
+        
+        $this->load->view('footer');
     }
     
     /**
