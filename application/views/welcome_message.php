@@ -1,4 +1,4 @@
-<?php
+<p><?php
   if(!$loggedin){
 ?>
   <h1>Welcome</h1>
@@ -10,4 +10,4 @@
 <?
     echo "<a href=\"".site_url('auth/logout')."\" >Logout</a>";
   }
-?>
+?></p>

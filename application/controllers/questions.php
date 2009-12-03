@@ -5,6 +5,9 @@ class Questions extends Controller {
 
     function Questions() {
         parent::Controller();
+        $this->load->library('DX_Auth');  
+        $this->load->model('ok_questionsmodel');
+        $this->load->model('ok_answersmodel');
     }
 
     /**
@@ -14,8 +17,21 @@ class Questions extends Controller {
      */
     function view($username = NULL, $start = 0, $pageSize = self::DEFAULT_QUESTIONS_PAGE_SIZE) {
         // Get a list of questions/answers which are already answered by the user
+        if(!$this->dx_auth->is_logged_in()){
+        	redirect('auth/login/', 'refresh');
+        	return;
+        }
+        if($username==NULL){
+        	$username=$this->dx_auth->get_username();
+        }
+        //Fetch the questions
+        $data['questions']=$this->ok_questionsmodel->findByFilter(NULL,NULL,10);
+        //Fetch the answer texts
+        /*foreach($data['questions'] as $key=>$question){
+       		$data['questions'][$key]=$this->
+        }*/
         $this->load->view('header',array('page'=>'question'));
-        
+        $this->load->view('questions/view.php',$data);
         $this->load->view('footer');
     }
     
@@ -24,6 +40,20 @@ class Questions extends Controller {
      */
     function show($start = 0, $pageSize = self::DEFAULT_QUESTIONS_PAGE_SIZE) {
         // Get entire list of questions & answers which are not answered by the user
+        if(!$this->dx_auth->is_logged_in()){
+        	redirect('auth/login', 'refresh');
+        	return;
+        }
+        $username=$this->dx_auth->get_username();
+                //Fetch the questions
+        $data['questions']=$this->ok_questionsmodel->findByFilter(NULL,NULL,1);
+        //Fetch the answer texts
+        /*foreach($data['questions'] as $key=>$question){
+       		$data['questions'][$key]=$this->
+        }*/
+        $this->load->view('header',array('page'=>'question'));
+        $this->load->view('questions/show.php',$data);
+        $this->load->view('footer');
     }
     
     /**

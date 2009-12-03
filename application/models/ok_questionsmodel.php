@@ -27,9 +27,6 @@ var $answer1_id;
 var $answer2_id;
 var $answer3_id;
 var $answer4_id;
-var $answer5_id;
-var $answer6_id;
-
 
    function Ok_questionsModel()
    {
@@ -73,7 +70,7 @@ var $answer6_id;
 
       // Load the database library
       $this->load->database();
-
+      $this->load->model('ok_answersmodel');
       // ///////////////////////////////////////////////////////////////////////
       // Make a note of the current table record count
       // ///////////////////////////////////////////////////////////////////////
@@ -109,7 +106,7 @@ var $answer6_id;
       }
 
       // Build up the SQL query string and run the query
-      $sql = 'SELECT * FROM ok_questions ' . $where_clause . $limit_clause;
+      $sql = 'SELECT * FROM ok_questions '. $where_clause . $limit_clause;
 
       $query = $this->db->query($sql);
 
@@ -130,13 +127,20 @@ var $answer6_id;
 			$query_results['id']		 = $row['id'];
 			$query_results['question_text']		 = $row['question_text'];
 			$query_results['addedbyuser_id']		 = $row['addedbyuser_id'];
-			$query_results['answer1_id']		 = $row['answer1_id'];
+         $query_results['answer1_id']       = $row['answer1_id'];
 			$query_results['answer2_id']		 = $row['answer2_id'];
 			$query_results['answer3_id']		 = $row['answer3_id'];
 			$query_results['answer4_id']		 = $row['answer4_id'];
-			$query_results['answer5_id']		 = $row['answer5_id'];
-			$query_results['answer6_id']		 = $row['answer6_id'];
-
+         
+         for($i=1;$i<=4;$i++){
+            $sub_sql='SELECT * FROM ok_answers WHERE id='.$row['answer'.$i.'_id'].' LIMIT 0,1';
+            $sub_query=$this->db->query($sub_sql);
+            if($sub_query->num_rows()>0){
+               $sub_row=$sub_query->row();
+               $query_results['answer'.$i.'_text']=$sub_row->answer_text;
+            }
+         }
+         
 			$results[]		 = $query_results;
 
 
@@ -169,8 +173,6 @@ var $answer6_id;
 		$query_results['answer2_id']		 = $row['answer2_id'];
 		$query_results['answer3_id']		 = $row['answer3_id'];
 		$query_results['answer4_id']		 = $row['answer4_id'];
-		$query_results['answer5_id']		 = $row['answer5_id'];
-		$query_results['answer6_id']		 = $row['answer6_id'];
 
 		$results		 = $query_results;
 
@@ -269,17 +271,6 @@ var $answer6_id;
 	function set_Answer4_id($answer4_id) {
 		$this->answer4_id = $answer4_id;	}
 
-	function get_Answer5_id() {
-		return $this->answer5_id;	}
-
-	function set_Answer5_id($answer5_id) {
-		$this->answer5_id = $answer5_id;	}
-
-	function get_Answer6_id() {
-		return $this->answer6_id;	}
-
-	function set_Answer6_id($answer6_id) {
-		$this->answer6_id = $answer6_id;	}
 
 
 
@@ -295,9 +286,6 @@ var $answer6_id;
 		$this->answer2_id = "";
 		$this->answer3_id = "";
 		$this->answer4_id = "";
-		$this->answer5_id = "";
-		$this->answer6_id = "";
-
       }
 
       // Initialize all your default variables here
@@ -313,8 +301,6 @@ var $answer6_id;
 		$this->answer2_id = "";
 		$this->answer3_id = "";
 		$this->answer4_id = "";
-		$this->answer5_id = "";
-		$this->answer6_id = "";
 
       }
 

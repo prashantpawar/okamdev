@@ -27,11 +27,20 @@
         <div class="hlist">
           <!-- main navigation: horizontal list -->
           <ul>
-            <li <? if($page=='welcome') echo 'class="active"'; ?>><strong>Welcome</strong></li>
-            <li <? if($page=='question') echo 'class="active"'; ?>><?= anchor('questions/view','Questions');?></li>
-            <li <? if($page=='welcome') echo 'class="active"'; ?>><a href="#">Button 3</a></li>
-            <li <? if($page=='welcome') echo 'class="active"'; ?>><a href="#">Button 4</a></li>
-            <li <? if($page=='welcome') echo 'class="active"'; ?>><a href="#">Button 5</a></li>
+            <?	if($page=='welcome') 
+            		echo '<li class="active"><strong>Welcome</strong></li>';
+               	else 
+               		echo '<li>'.anchor('welcome','Welcome').'</li>'; ?>
+            <?	if($page=='question') 
+            		echo '<li class="active"><strong>Question</strong></li>';
+               	else 
+               		echo '<li>'.anchor('questions/show','Question').'</li>'; ?>
+            <?	if($page=='answers') 
+            		echo '<li class="active"><strong>Answers</strong></li>';
+               	else 
+               		echo '<li>'.anchor('answers/view','Answers').'</li>'; ?>
+            <li <? if($page=='button4') echo 'class="active"'; ?>><a href="#">Button 4</a></li>
+            <li <? if($page=='button5') echo 'class="active"'; ?>><a href="#">Button 5</a></li>
           </ul>
         </div>
       </div>

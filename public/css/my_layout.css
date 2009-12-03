@@ -27,3 +27,6 @@
     background: url(../images/logo.png);
     text-indent: -9999px;
   }
+  p {
+  	font-family:Calibri;
+  }
