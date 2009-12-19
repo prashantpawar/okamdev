@@ -40,13 +40,14 @@ class Questions extends Controller {
      */
     function show($start = 0, $pageSize = self::DEFAULT_QUESTIONS_PAGE_SIZE) {
         // Get entire list of questions & answers which are not answered by the user
+        $answer=$this->input->post('');
         if(!$this->dx_auth->is_logged_in()){
         	redirect('auth/login', 'refresh');
         	return;
         }
         $username=$this->dx_auth->get_username();
                 //Fetch the questions
-        $data['questions']=$this->ok_questionsmodel->findByFilter(NULL,NULL,1);
+        $data['questions']=$this->ok_questionsmodel->findByFilter(NULL,NULL,"0,1");
         //Fetch the answer texts
         /*foreach($data['questions'] as $key=>$question){
        		$data['questions'][$key]=$this->
