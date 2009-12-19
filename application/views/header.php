@@ -1,70 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<title>OKamdev</title>
-<!-- add your meta tags here -->
-<link href="<?=base_url();?>public/css/my_layout.css" rel="stylesheet" type="text/css" />
-<!--[if lte IE 7]>
-<link href="<?=base_url();?>public/css/patches/patch_my_layout.css" rel="stylesheet" type="text/css" />
-<![endif]-->
-</head>
-<body>
-  <div class="page_margins">
-    <div class="page">
-      <div id="header">
-        <div id="topnav">
-          <!-- start: skip link navigation -->
-          <a class="skip" title="skip link" href="#navigation">Skip to the navigation</a><span class="hideme">.</span>
-          <a class="skip" title="skip link" href="#content">Skip to the content</a><span class="hideme">.</span>
-          <!-- end: skip link navigation --><a href="#">Login</a> | <a href="#">Contact</a> | <a href="#">Imprint</a>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Gooey Templates : CMS Style App</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <link rel="stylesheet" href="<?= base_url(); ?>public/css/reset-fonts.css" type="text/css" media="screen, projection" />
+        <link rel="stylesheet" href="<?= base_url(); ?>public/css/gt-styles.css" type="text/css" media="screen, projection" />
+    </head>
+    <body>
+        <!-- head -->
+        <div class="gt-hd clearfix">
+            <!-- logo -->
+            <div class="gt-logo">
+                Okamdev
+            </div>
+            <!-- / logo -->
+            
+            <!-- navigation -->
+            <div class="gt-nav">
+                <ul>
+                    <li><?= anchor('welcome','Welcome'); ?></li>
+                    <li><?= anchor('questions/show','Question'); ?></li>
+                    <li><?= anchor('answers/view','Answers'); ?></li>
+                </ul>
+            </div>
+            <!-- / navigation -->
+            
         </div>
-        <h1 class="siteheader">Kamdev</h1>
-      </div>
-      <div id="nav">
-        <!-- skiplink anchor: navigation -->
-        <a id="navigation" name="navigation"></a>
-        <div class="hlist">
-          <!-- main navigation: horizontal list -->
-          <ul>
-            <?	if($page=='welcome') 
-            		echo '<li class="active"><strong>Welcome</strong></li>';
-               	else 
-               		echo '<li>'.anchor('welcome','Welcome').'</li>'; ?>
-            <?	if($page=='question') 
-            		echo '<li class="active"><strong>Question</strong></li>';
-               	else 
-               		echo '<li>'.anchor('questions/show','Question').'</li>'; ?>
-            <?	if($page=='answers') 
-            		echo '<li class="active"><strong>Answers</strong></li>';
-               	else 
-               		echo '<li>'.anchor('answers/view','Answers').'</li>'; ?>
-            <li <? if($page=='button4') echo 'class="active"'; ?>><a href="#">Button 4</a></li>
-            <li <? if($page=='button5') echo 'class="active"'; ?>><a href="#">Button 5</a></li>
-          </ul>
-        </div>
-      </div>
-      <div id="main">
-        <div id="col1">
-          <div id="col1_content" class="clearfix">
-            <!-- add your content here -->
-            <ul>
-              <li>List Item 1</li>
-              <li>List Item 2</li>
-              <li>List Item 3</li>
-              <li>List Item 4</li>
-              <li>List Item 5</li>
-            </ul>
-          </div>
-        </div>
-        <div id="col3">
-          <div id="col3_content" class="clearfix">
-            <!-- add your content here -->
-            <b class="rrect">
-  			<b class="rrect1"><b></b></b>
-  			<b class="rrect2"><b></b></b>
-  			<b class="rrect3"></b>
-  			<b class="rrect4"></b>
-  			<b class="rrect5"></b></b>
-
-  			<div class="rrectfg">
+        <!-- / head -->
+        
+        <!-- body -->
+        <div class="gt-bd gt-cols clearfix">
+                    
+            <!-- main content -->

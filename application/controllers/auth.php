@@ -126,7 +126,9 @@ class Auth extends Controller
 					}
 					
 					// Load login page view
+                    $this->load->view('header',array('page'=>'welcome'));
 					$this->load->view($this->dx_auth->login_view, $data);
+                    $this->load->view('footer');
 				}
 			}
 		}
