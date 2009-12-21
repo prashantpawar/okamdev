@@ -52,9 +52,9 @@ var $answer_text;
       return $this->find(NULL, $start, $count);
    }
 
-//   function findById($key_value) {
-//      return $this->find(array('id' => '$key_value'));
-//   }
+   function findById($key_value) {
+      return $this->find(array('id' => '$key_value'));
+   }
 
    function findByFilter($filter_rules, $start = NULL, $count = NULL) {
       return $this->find($filter_rules, $start, $count);
