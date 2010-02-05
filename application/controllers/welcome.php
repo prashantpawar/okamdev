@@ -11,7 +11,11 @@ class Welcome extends Controller {
 	
 	function index()
 	{
-		$this->load->view('header',array('page'=>'welcome'));
+		$headerdata=array(
+        		'page'=>'welcome',
+        		'navbar'=> array(),
+        		);
+		$this->load->view('header',$headerdata);
         if(!$this->dx_auth->is_logged_in()){
             $this->load->view('welcome_message',array('loggedin'=>false));
         }else{    
