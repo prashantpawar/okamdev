@@ -1,70 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<title>OKamdev</title>
-<!-- add your meta tags here -->
-<link href="<?=base_url();?>public/css/my_layout.css" rel="stylesheet" type="text/css" />
-<!--[if lte IE 7]>
-<link href="<?=base_url();?>public/css/patches/patch_my_layout.css" rel="stylesheet" type="text/css" />
-<![endif]-->
-</head>
-<body>
-  <div class="page_margins">
-    <div class="page">
-      <div id="header">
-        <div id="topnav">
-          <!-- start: skip link navigation -->
-          <a class="skip" title="skip link" href="#navigation">Skip to the navigation</a><span class="hideme">.</span>
-          <a class="skip" title="skip link" href="#content">Skip to the content</a><span class="hideme">.</span>
-          <!-- end: skip link navigation --><a href="#">Login</a> | <a href="#">Contact</a> | <a href="#">Imprint</a>
-        </div>
-        <h1 class="siteheader">Kamdev</h1>
-      </div>
-      <div id="nav">
-        <!-- skiplink anchor: navigation -->
-        <a id="navigation" name="navigation"></a>
-        <div class="hlist">
-          <!-- main navigation: horizontal list -->
-          <ul>
-            <?	if($page=='welcome') 
-            		echo '<li class="active"><strong>Welcome</strong></li>';
-               	else 
-               		echo '<li>'.anchor('welcome','Welcome').'</li>'; ?>
-            <?	if($page=='question') 
-            		echo '<li class="active"><strong>Question</strong></li>';
-               	else 
-               		echo '<li>'.anchor('questions/show','Question').'</li>'; ?>
-            <?	if($page=='answers') 
-            		echo '<li class="active"><strong>Answers</strong></li>';
-               	else 
-               		echo '<li>'.anchor('answers/view','Answers').'</li>'; ?>
-            <li <? if($page=='button4') echo 'class="active"'; ?>><a href="#">Button 4</a></li>
-            <li <? if($page=='button5') echo 'class="active"'; ?>><a href="#">Button 5</a></li>
-          </ul>
-        </div>
-      </div>
-      <div id="main">
-        <div id="col1">
-          <div id="col1_content" class="clearfix">
-            <!-- add your content here -->
-            <ul>
-              <li>List Item 1</li>
-              <li>List Item 2</li>
-              <li>List Item 3</li>
-              <li>List Item 4</li>
-              <li>List Item 5</li>
-            </ul>
-          </div>
-        </div>
-        <div id="col3">
-          <div id="col3_content" class="clearfix">
-            <!-- add your content here -->
-            <b class="rrect">
-  			<b class="rrect1"><b></b></b>
-  			<b class="rrect2"><b></b></b>
-  			<b class="rrect3"></b>
-  			<b class="rrect4"></b>
-  			<b class="rrect5"></b></b>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <meta name="author" content="Dave Shea" />
+  <meta name="keywords" content="design, css, cascading, style, sheets, xhtml, graphic design, w3c, web standards, visual, display" />
+  <meta name="description" content="A demonstration of what can be accomplished visually through CSS-based design." />
+  <meta name="robots" content="all" />
 
-  			<div class="rrectfg">
+  <title>Prem Pariksha: Match making by specialists</title>
+
+  <!-- to correct the unsightly Flash of Unstyled Content. http://www.bluerobot.com/web/css/fouc.asp -->
+  <script type="text/javascript"></script>
+  
+  <style type="text/css" media="all">
+    @import "<?= base_url(); ?>public/css/zengarden.css";
+  </style>
+  
+</head>
+
+<!--
+
+
+  This xhtml document is marked up to provide the designer with the maximum possible flexibility.
+  There are more classes and extraneous tags than needed, and in a real world situation, it's more
+  likely that it would be much leaner.
+  
+  However, I think we can all agree that even given that, we're still better off than if this had been
+  built with tables.
+
+
+-->
+
+<body onload="window.defaultStatus='css Zen Garden: The Beauty in CSS Design';" id="css-zen-garden">
+<div id="container">
+  <div id="intro">
+    <div id="pageHeader">
+      <h1><span>Prem Pariksha</span></h1>
+      <h2><span>Match making by specialists.</span></h2>
+    </div>
+
+    <div id="quickSummary">
+      <p class="p1"><span>A demonstration of what can be accomplished visually through <acronym title="Cascading Style Sheets">CSS</acronym>-based design. Select any style sheet from the list to load it into this page.</span></p>
+      <p class="p2"><span>Download the sample <a href="zengarden-sample.html" title="This page's source HTML code, not to be modified.">html file</a> and <a href="zengarden-sample.css" title="This page's sample CSS, the file you may modify.">css file</a></span></p>
+    </div>
+
+    <div id="preamble">
+      
+    </div>
+  </div>

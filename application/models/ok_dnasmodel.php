@@ -29,8 +29,6 @@ var $answer1_id;
 var $answer2_id;
 var $answer3_id;
 var $answer4_id;
-var $answer5_id;
-var $answer6_id;
 
 
    function Ok_dnasModel()
@@ -138,8 +136,6 @@ var $answer6_id;
 			$query_results['answer2_id']		 = $row['answer2_id'];
 			$query_results['answer3_id']		 = $row['answer3_id'];
 			$query_results['answer4_id']		 = $row['answer4_id'];
-			$query_results['answer5_id']		 = $row['answer5_id'];
-			$query_results['answer6_id']		 = $row['answer6_id'];
 
 			$results[]		 = $query_results;
 
@@ -175,8 +171,6 @@ var $answer6_id;
 		$query_results['answer2_id']		 = $row['answer2_id'];
 		$query_results['answer3_id']		 = $row['answer3_id'];
 		$query_results['answer4_id']		 = $row['answer4_id'];
-		$query_results['answer5_id']		 = $row['answer5_id'];
-		$query_results['answer6_id']		 = $row['answer6_id'];
 
 		$results		 = $query_results;
 
@@ -287,18 +281,6 @@ var $answer6_id;
 	function set_Answer4_id($answer4_id) {
 		$this->answer4_id = $answer4_id;	}
 
-	function get_Answer5_id() {
-		return $this->answer5_id;	}
-
-	function set_Answer5_id($answer5_id) {
-		$this->answer5_id = $answer5_id;	}
-
-	function get_Answer6_id() {
-		return $this->answer6_id;	}
-
-	function set_Answer6_id($answer6_id) {
-		$this->answer6_id = $answer6_id;	}
-
 
 
       // Function used to initilialise class variables.
@@ -315,8 +297,6 @@ var $answer6_id;
 		$this->answer2_id = "";
 		$this->answer3_id = "";
 		$this->answer4_id = "";
-		$this->answer5_id = "";
-		$this->answer6_id = "";
 
       }
 
@@ -335,8 +315,6 @@ var $answer6_id;
 		$this->answer2_id = "";
 		$this->answer3_id = "";
 		$this->answer4_id = "";
-		$this->answer5_id = "";
-		$this->answer6_id = "";
 
       }
 

@@ -6,7 +6,7 @@ class Questions extends Controller {
     function Questions() {
         parent::Controller();
         $this->load->library('DX_Auth');  
-        $this->load->model('ok_questionsmodel');
+        $this->load->model(array('ok_questionsmodel','ok_dnasmodel'));
         $this->load->model('ok_answersmodel');
     }
 
@@ -59,12 +59,21 @@ class Questions extends Controller {
         			),
         		);
         if(isset($_POST['submit'])){
-            $data['post']=$_POST;
+            unset($_POST['submit']);
+            $answer_ids=array();
+            foreach($_POST as $question_id=>$answer_id){
+                $answer_ids[]=$this->ok_dnasmodel->add(array(
+                    'userid'=>$this->dx_auth->get_user_id(),
+                    'question_id'=>$question_id,
+                    'answer_id'=>$answer_id,
+                    'relevance_id'=>0
+                    ));
+            }
+            $data['post']=$answer_ids;
             $this->load->view('header',$headerdata);
             $this->load->view('questions/showanswers.php',$data);
             $this->load->view('footer');
         }else{
-            $data['post']=$_POST;
             $this->load->view('header',$headerdata);
             $this->load->view('questions/show.php',$data);
             $this->load->view('footer');
